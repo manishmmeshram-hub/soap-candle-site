@@ -1,0 +1,461 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Sabun & Batti</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Rozha+One&display=swap" rel="stylesheet">
+<style>
+/* Layout: a deep neem-green hero band carries the one bold move (big type + hand-cut bars + a lit jar);
+   the rest is quiet sage ground with flat bordered cards, a cure-time timeline and a copy-to-send basket. */
+:root {
+  --bg: #edf0e8;
+  --surface: #f6f8f1;
+  --ink: #17291f;
+  --muted: #4d6054;
+  --line: #c9d2c3;
+  --accent: #e8b02e;
+  --on-accent: #17291f;
+  --deep: #1f3a2e;
+  --on-deep: #eef2e8;
+  --deep-muted: #b3c4b6;
+  --font-display: "Rozha One", "Iowan Old Style", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101a15; --surface: #17251d; --ink: #e9eee3; --muted: #a3b3a7; --line: #2a3b31;
+    --accent: #edb93e; --on-accent: #14200f; --deep: #1b3227; --on-deep: #eaf0e4; --deep-muted: #a9bdad;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101a15; --surface: #17251d; --ink: #e9eee3; --muted: #a3b3a7; --line: #2a3b31;
+  --accent: #edb93e; --on-accent: #14200f; --deep: #1b3227; --on-deep: #eaf0e4; --deep-muted: #a9bdad;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap {
+  max-width: 1120px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; line-height: 1.08; margin: 0; }
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h3 { font-size: 1.45rem; }
+p { margin: 0; }
+
+/* hero */
+.hero { background: var(--deep); color: var(--on-deep); }
+.hero .label { color: var(--deep-muted); }
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 20px; }
+.brand { font-family: var(--font-display); font-size: 1.5rem; text-decoration: none; }
+.brand span { color: var(--accent); }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; font-size: 15px; }
+nav a { text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
+nav a:hover { border-bottom-color: var(--accent); }
+.basket-link { font-family: var(--font-mono); font-size: 13px; background: var(--accent); color: var(--on-accent); padding: 6px 14px !important; border-radius: 999px; border-bottom: 0 !important; }
+.hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px 48px; align-items: center; padding-block: 28px 64px; }
+.hero h1 { font-size: clamp(2.7rem, 7.2vw, 5.4rem); letter-spacing: -.01em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-copy { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.hero-copy p.lede { font-size: 1.15rem; max-width: 46ch; color: var(--deep-muted); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; font: 700 15px var(--font-body); text-decoration: none; cursor: pointer;
+  padding: 12px 22px; border-radius: 999px; border: 2px solid var(--accent);
+  background: var(--accent); color: var(--on-accent);
+}
+.btn:hover { filter: brightness(1.06); }
+.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.hero-art { min-width: 0; }
+.hero-art svg { width: 100%; height: auto; display: block; max-width: 100%; }
+.facts { border-top: 1px solid rgba(255,255,255,.16); }
+.facts ul { list-style: none; margin: 0; padding-block: 18px; display: flex; flex-wrap: wrap; gap: 8px 36px; }
+.facts li { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .06em; color: var(--deep-muted); }
+.facts li b { color: var(--on-deep); font-weight: 500; }
+
+/* sections */
+section { padding-block: 80px; }
+.band { background: var(--surface); border-block: 1px solid var(--line); }
+.sec-head { display: flex; flex-direction: column; gap: 12px; max-width: 60ch; margin-bottom: 40px; }
+.sec-head p { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; display: flex; flex-direction: column; min-width: 0; }
+.band .card { background: var(--bg); }
+.art { background: color-mix(in srgb, var(--artc) 20%, var(--surface)); border-bottom: 1px solid var(--line); padding: 18px 18px 10px; border-radius: 6px 6px 0 0; }
+.band .art { background: color-mix(in srgb, var(--artc) 20%, var(--bg)); }
+.art svg { display: block; width: 100%; height: 150px; color: var(--ink); }
+.card-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-body h3 { font-size: 1.3rem; }
+.card-body .meta { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.card-body p.desc { font-size: 15px; color: var(--muted); }
+.buy { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.price { font-family: var(--font-mono); font-size: 18px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.add { font: 700 14px var(--font-body); cursor: pointer; padding: 9px 16px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
+.add:hover { background: var(--ink); color: var(--bg); }
+.add.done { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* ingredients */
+.ing { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.ing div { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ing b { font-family: var(--font-display); font-weight: 400; font-size: 1.35rem; }
+.ing b small { font-family: var(--font-body); font-size: 14px; color: var(--muted); margin-left: 6px; }
+.ing p { font-size: 15px; color: var(--muted); }
+
+/* process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 760px; }
+.steps li { display: grid; grid-template-columns: 110px 1fr; gap: 8px 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .when { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; color: var(--muted); padding-top: 4px; }
+.steps h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.steps p { color: var(--muted); font-size: 15px; }
+@media (max-width: 520px) { .steps li { grid-template-columns: 1fr; } }
+
+/* order */
+.order-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px; align-items: start; }
+.panel { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.lines li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.lines .nm { min-width: 0; }
+.lines .nm small { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.qty { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); }
+.qty button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; font-size: 16px; line-height: 1; }
+.qty button:hover { background: var(--ink); color: var(--bg); }
+.qty span { min-width: 22px; text-align: center; font-variant-numeric: tabular-nums; }
+.line-total { font-family: var(--font-mono); font-variant-numeric: tabular-nums; min-width: 64px; text-align: right; }
+.empty { color: var(--muted); font-size: 15px; padding: 6px 0; }
+.total { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: 18px; font-variant-numeric: tabular-nums; }
+.total b { font-weight: 500; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea {
+  font: 16px var(--font-body); color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; width: 100%;
+}
+.field textarea { min-height: 190px; resize: vertical; font-family: var(--font-mono); font-size: 13px; line-height: 1.55; }
+.status { font-size: 14px; color: var(--muted); min-height: 22px; }
+.contact { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 14px; }
+.contact span { color: var(--muted); }
+
+footer { background: var(--deep); color: var(--deep-muted); padding-block: 36px; font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+footer b { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; color: var(--on-deep); }
+
+/* flame */
+.flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 2.4s ease-in-out infinite; }
+.glow { animation: pulse 3.1s ease-in-out infinite; }
+@keyframes flicker { 0%,100% { transform: scale(1,1) rotate(0deg); } 25% { transform: scale(.94,1.06) rotate(-2deg); } 50% { transform: scale(1.04,.96) rotate(1.5deg); } 75% { transform: scale(.97,1.04) rotate(-1deg); } }
+@keyframes pulse { 0%,100% { opacity: .85; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .flame, .glow { animation: none; } html { scroll-behavior: auto; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top">Sabun <span>&amp;</span> Batti</a>
+      <nav aria-label="Main">
+        <a href="#soaps">Soaps</a>
+        <a href="#candles">Candles</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#making">How we make them</a>
+        <a class="basket-link" href="#order">Basket <span id="count">0</span></a>
+      </nav>
+    </div>
+    <div class="hero-grid" id="top">
+      <div class="hero-copy">
+        <span class="label">Small batch · Made by hand</span>
+        <h1>Soap cured for six weeks. Candles <em>poured</em> by hand.</h1>
+        <p class="lede">Cold process bars made with neem, turmeric, oats and shea butter, and soy wax candles that smell like mogra, chai and the first rain.</p>
+        <div class="btn-row">
+          <a class="btn" href="#soaps">Shop soaps</a>
+          <a class="btn ghost" href="#candles">Shop candles</a>
+        </div>
+      </div>
+      <div class="hero-art" id="hero-art" role="img" aria-label="Three handmade soap bars next to a lit soy candle in a glass jar"></div>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="wrap">
+      <ul>
+        <li><b>100 g</b> bars</li>
+        <li><b>6 weeks</b> cured</li>
+        <li><b>Soy wax</b> + cotton wick</li>
+        <li><b>~40 hr</b> burn time</li>
+        <li>No palm oil</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="soaps">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Handmade soap</span>
+        <h2>Four bars, each with a short ingredient list</h2>
+        <p>Every bar is made from plant oils and butters, then left to cure so it lasts longer in your bathroom and lathers gently.</p>
+      </div>
+      <div class="grid" id="soap-grid"></div>
+    </div>
+  </section>
+
+  <section id="candles" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Scented candles</span>
+        <h2>Soy wax candles for slow evenings</h2>
+        <p>Poured into reusable glass jars with a cotton wick. Trim the wick to 5 mm before each burn and let the wax melt to the edge the first time.</p>
+      </div>
+      <div class="grid" id="candle-grid"></div>
+    </div>
+  </section>
+
+  <section id="ingredients">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">What goes in</span>
+        <h2>Ingredients you can find in your kitchen</h2>
+        <p>Most of what we use is familiar. Here is what each one does in the bar.</p>
+      </div>
+      <div class="ing">
+        <div><b>Neem <small>नीम</small></b><p>Leaf-infused oil that gives the Neem &amp; Tulsi bar its green colour and clean, herbal smell.</p></div>
+        <div><b>Haldi <small>हळद</small></b><p>Turmeric powder for a golden bar, used in Indian skincare for generations.</p></div>
+        <div><b>Chandan <small>चंदन</small></b><p>Sandalwood powder, soft and woody, blended into the Haldi bar.</p></div>
+        <div><b>Shea butter</b><p>Makes the bar creamy and leaves skin feeling soft after washing.</p></div>
+        <div><b>Coconut oil</b><p>Builds a rich, bubbly lather and a hard bar that lasts.</p></div>
+        <div><b>Oats &amp; honey</b><p>Finely ground oats and raw honey for a gentle, lightly scrubby wash.</p></div>
+        <div><b>Multani mitti</b><p>Fuller's earth clay, with dried rose petals, in the Rose Multani bar.</p></div>
+        <div><b>Soy wax</b><p>A plant-based wax that burns slowly and cleanly in every candle jar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="making" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">How we make them</span>
+        <h2>Slow on purpose</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="when">DAY 1</span><div><h3>Blend and pour</h3><p>Oils and butters are warmed, mixed with lye solution, and poured into moulds with the herbs, clays and powders for that batch.</p></div></li>
+        <li><span class="when">DAY 2</span><div><h3>Cut by hand</h3><p>Once firm, each loaf is cut into bars and stamped.</p></div></li>
+        <li><span class="when">WEEKS 1 TO 6</span><div><h3>Cure</h3><p>Bars rest on open racks while the water evaporates. This is what makes them mild and long-lasting.</p></div></li>
+        <li><span class="when">CANDLE DAY</span><div><h3>Melt, scent, pour</h3><p>Soy wax is melted, the fragrance is stirred in, and the wax is poured into jars at about 55 °C. Candles set for a week before they ship.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Order</span>
+        <h2>Fill your basket, then send us the message</h2>
+        <p>Add items above, add your name and city, then copy the message and send it to us on WhatsApp or Instagram. We confirm the price and delivery by reply.</p>
+      </div>
+      <div class="order-grid">
+        <div class="panel">
+          <span class="label">Your basket</span>
+          <ul class="lines" id="lines"></ul>
+          <div class="total"><span>Total</span><b id="total">₹0</b></div>
+        </div>
+        <div class="panel">
+          <div class="field"><label for="cust-name">Your name</label><input id="cust-name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="cust-city">City and pincode</label><input id="cust-city" type="text" autocomplete="postal-code"></div>
+          <div class="field"><label for="order-text">Message to send</label><textarea id="order-text" readonly></textarea></div>
+          <div class="btn-row"><button class="btn" id="copy" type="button">Copy message</button></div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+          <div class="contact">
+            <span>Send it to us here</span>
+            <div>WhatsApp +91 98XXX XXXXX</div>
+            <div>Instagram @sabunandbatti</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Sabun &amp; Batti</b>
+    <span>Handmade soap and scented candles. Patch test any new soap before regular use.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var SOAPS = [
+    { id: "neem", name: "Neem & Tulsi", price: 180, color: "#5d8a4e", speck: "#2f5a2a", kind: "flecks",
+      meta: "100 g · cured 6 wks", desc: "Neem-infused oil, holy basil, coconut oil, olive oil and shea butter. Fresh and herbal." },
+    { id: "haldi", name: "Haldi & Chandan", price: 220, color: "#e0a526", speck: "#a8741b", kind: "flecks",
+      meta: "100 g · cured 6 wks", desc: "Turmeric and sandalwood powder with sweet almond oil and shea butter. Warm and woody." },
+    { id: "oat", name: "Oat & Honey", price: 200, color: "#d9bf8f", speck: "#a98a55", kind: "oats",
+      meta: "100 g · cured 6 wks", desc: "Ground oats, raw honey, shea butter and castor oil. A soft, lightly scrubby everyday bar." },
+    { id: "rose", name: "Rose Multani", price: 240, color: "#d79a96", speck: "#a64a5a", kind: "petals",
+      meta: "100 g · cured 6 wks", desc: "Multani mitti clay, dried rose petals and coconut milk. Smooth, with a light rose scent." }
+  ];
+  var CANDLES = [
+    { id: "mogra", name: "Mogra Evening", price: 449, color: "#efe3c4", wick: "#2d2d2d",
+      meta: "180 g · ~40 hr burn", desc: "Jasmine blossom with a green, creamy heart. Smells like a garland on a warm evening." },
+    { id: "chai", name: "Chai Masala", price: 449, color: "#c9915a", wick: "#2d2d2d",
+      meta: "180 g · ~40 hr burn", desc: "Cardamom, ginger, cinnamon and a little black tea. Good company for a rainy afternoon." },
+    { id: "khus", name: "Khus & Rain", price: 499, color: "#9fb59a", wick: "#2d2d2d",
+      meta: "180 g · ~40 hr burn", desc: "Vetiver roots and wet earth. The smell of the first monsoon shower." }
+  ];
+  var ALL = {};
+  SOAPS.forEach(function (p) { p.type = "Soap"; ALL[p.id] = p; });
+  CANDLES.forEach(function (p) { p.type = "Candle"; ALL[p.id] = p; });
+
+  function rnd(seed) { var s = seed; return function () { s = (s * 16807) % 2147483647; return s / 2147483647; }; }
+  function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+  function money(n) { return "₹" + n.toLocaleString("en-IN"); }
+
+  function soapGroup(p, seedNum) {
+    var r = rnd(seedNum || 7), specks = "", i, x, y, s;
+    for (i = 0; i < 16; i++) {
+      x = 30 + r() * 140; y = 70 + r() * 62; s = 1.6 + r() * 2.2;
+      if (p.kind === "oats") specks += '<ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="' + (s * 1.5).toFixed(1) + '" ry="' + s.toFixed(1) + '" transform="rotate(' + Math.round(r() * 160) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')" fill="' + p.speck + '" opacity=".6"/>';
+      else if (p.kind === "petals") specks += '<ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="' + (s * 1.3).toFixed(1) + '" ry="' + (s * 0.8).toFixed(1) + '" transform="rotate(' + Math.round(r() * 160) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')" fill="' + p.speck + '" opacity=".7"/>';
+      else specks += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + s.toFixed(1) + '" fill="' + p.speck + '" opacity=".55"/>';
+    }
+    return '<ellipse cx="120" cy="146" rx="108" ry="9" fill="#000" opacity=".16"/>' +
+      '<g stroke-linejoin="round" stroke-width="6">' +
+      '<polygon points="180,60 220,36 220,116 180,140" fill="color-mix(in srgb, ' + p.color + ' 72%, #000)" stroke="color-mix(in srgb, ' + p.color + ' 72%, #000)"/>' +
+      '<polygon points="20,60 60,36 220,36 180,60" fill="color-mix(in srgb, ' + p.color + ' 78%, #fff)" stroke="color-mix(in srgb, ' + p.color + ' 78%, #fff)"/>' +
+      '<rect x="20" y="60" width="160" height="80" fill="' + p.color + '" stroke="' + p.color + '"/></g>' +
+      specks +
+      '<text x="100" y="106" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="3" fill="#000" opacity=".42">SABUN &amp; BATTI</text>';
+  }
+  function soapSVG(p) {
+    return '<svg viewBox="0 0 240 160" aria-hidden="true">' + soapGroup(p, p.id.length * 13 + 5) + '</svg>';
+  }
+  function candleGroup(p, uid) {
+    return '<defs>' +
+      '<radialGradient id="glow-' + uid + '"><stop offset="0" stop-color="#ffd36a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd36a" stop-opacity="0"/></radialGradient>' +
+      '<linearGradient id="fl-' + uid + '" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f08a24"/><stop offset=".6" stop-color="#ffc247"/><stop offset="1" stop-color="#fff2b8"/></linearGradient></defs>' +
+      '<circle class="glow" cx="80" cy="54" r="50" fill="url(#glow-' + uid + ')"/>' +
+      '<rect x="28" y="92" width="104" height="112" rx="14" fill="#fff" fill-opacity=".12" stroke="currentColor" stroke-opacity=".4" stroke-width="2"/>' +
+      '<rect x="34" y="104" width="92" height="94" rx="10" fill="' + p.color + '"/>' +
+      '<ellipse cx="80" cy="104" rx="46" ry="6" fill="#fff" fill-opacity=".3"/>' +
+      '<line x1="80" y1="104" x2="80" y2="80" stroke="' + p.wick + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<path class="flame" d="M80 30 C92 48 94 62 80 76 C66 62 68 48 80 30 Z" fill="url(#fl-' + uid + ')"/>' +
+      '<rect x="48" y="136" width="64" height="42" rx="3" fill="#fff" fill-opacity=".88"/>' +
+      '<text x="80" y="153" text-anchor="middle" font-family="Rozha One, serif" font-size="12" fill="#1f3a2e">Batti</text>' +
+      '<text x="80" y="167" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="#444">SOY · 40 HR</text>';
+  }
+  function candleSVG(p) {
+    return '<svg viewBox="0 0 160 220" aria-hidden="true">' + candleGroup(p, p.id) + '</svg>';
+  }
+
+  /* hero artwork */
+  document.getElementById("hero-art").innerHTML =
+    '<svg viewBox="0 0 480 440" style="color:#eef2e8">' +
+    '<circle cx="240" cy="230" r="190" fill="#e8b02e" opacity=".10"/>' +
+    '<g transform="translate(10 250) rotate(-6 120 80)">' + soapGroup(SOAPS[0], 11) + '</g>' +
+    '<g transform="translate(20 300) rotate(3 120 80)">' + soapGroup(SOAPS[1], 23) + '</g>' +
+    '<g transform="translate(60 205) rotate(-2 120 80) scale(.92)">' + soapGroup(SOAPS[3], 41) + '</g>' +
+    '<g transform="translate(250 90) scale(1.4)">' + candleGroup(CANDLES[0], "hero") + '</g>' +
+    '</svg>';
+
+  function card(p, art) {
+    return '<article class="card"><div class="art" style="--artc:' + p.color + '">' + art + '</div>' +
+      '<div class="card-body"><span class="meta">' + esc(p.meta) + '</span><h3>' + esc(p.name) + '</h3>' +
+      '<p class="desc">' + esc(p.desc) + '</p>' +
+      '<div class="buy"><span class="price">' + money(p.price) + '</span>' +
+      '<button class="add" type="button" data-add="' + p.id + '" aria-label="Add ' + esc(p.name) + ' to basket">Add to basket</button></div></div></article>';
+  }
+  document.getElementById("soap-grid").innerHTML = SOAPS.map(function (p) { return card(p, soapSVG(p)); }).join("");
+  document.getElementById("candle-grid").innerHTML = CANDLES.map(function (p) { return card(p, candleSVG(p)); }).join("");
+
+  /* basket */
+  var cart = {};
+  var linesEl = document.getElementById("lines");
+  var totalEl = document.getElementById("total");
+  var countEl = document.getElementById("count");
+  var textEl = document.getElementById("order-text");
+  var nameEl = document.getElementById("cust-name");
+  var cityEl = document.getElementById("cust-city");
+  var statusEl = document.getElementById("status");
+
+  function orderText() {
+    var ids = Object.keys(cart).filter(function (k) { return cart[k] > 0; });
+    if (!ids.length) return "Your message will appear here once you add something to the basket.";
+    var total = 0;
+    var out = ["Hi Sabun & Batti, I would like to order:", ""];
+    ids.forEach(function (id) {
+      var p = ALL[id], line = p.price * cart[id]; total += line;
+      out.push(cart[id] + " x " + p.name + " (" + p.type.toLowerCase() + ") - " + money(line));
+    });
+    out.push("", "Total: " + money(total));
+    if (nameEl.value.trim()) out.push("Name: " + nameEl.value.trim());
+    if (cityEl.value.trim()) out.push("City and pincode: " + cityEl.value.trim());
+    out.push("", "Please confirm the delivery charge and payment details. Thank you!");
+    return out.join("\n");
+  }
+
+  function renderCart() {
+    var ids = Object.keys(cart).filter(function (k) { return cart[k] > 0; });
+    var total = 0, count = 0;
+    if (!ids.length) {
+      linesEl.innerHTML = '<li class="empty" style="display:block;border:0">Your basket is empty. Add a soap or a candle from the sections above.</li>';
+    } else {
+      linesEl.innerHTML = ids.map(function (id) {
+        var p = ALL[id], line = p.price * cart[id];
+        total += line; count += cart[id];
+        return '<li><div class="nm">' + esc(p.name) + '<small>' + p.type + ' · ' + money(p.price) + ' each</small></div>' +
+          '<div class="qty"><button type="button" data-dec="' + id + '" aria-label="Remove one ' + esc(p.name) + '">−</button><span>' + cart[id] + '</span><button type="button" data-inc="' + id + '" aria-label="Add one more ' + esc(p.name) + '">+</button></div>' +
+          '<div class="line-total">' + money(line) + '</div></li>';
+      }).join("");
+    }
+    totalEl.textContent = money(total);
+    countEl.textContent = count;
+    textEl.value = orderText();
+  }
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("button");
+    if (!t) return;
+    var id = t.getAttribute("data-add");
+    if (id) {
+      cart[id] = (cart[id] || 0) + 1; renderCart();
+      var old = t.textContent; t.textContent = "Added ✓"; t.classList.add("done");
+      setTimeout(function () { t.textContent = "Add to basket"; t.classList.remove("done"); }, 1200);
+      return;
+    }
+    id = t.getAttribute("data-inc");
+    if (id) { cart[id] += 1; renderCart(); return; }
+    id = t.getAttribute("data-dec");
+    if (id) { cart[id] = Math.max(0, cart[id] - 1); renderCart(); }
+  });
+  nameEl.addEventListener("input", function () { textEl.value = orderText(); });
+  cityEl.addEventListener("input", function () { textEl.value = orderText(); });
+
+  document.getElementById("copy").addEventListener("click", function () {
+    if (!Object.keys(cart).some(function (k) { return cart[k] > 0; })) {
+      statusEl.textContent = "Add at least one item to the basket first."; return;
+    }
+    function fallback() { textEl.focus(); textEl.select(); statusEl.textContent = "The message is selected. Copy it with your phone or keyboard, then send it to us."; }
+    try {
+      navigator.clipboard.writeText(textEl.value).then(function () {
+        statusEl.textContent = "Copied. Paste it into WhatsApp or Instagram to place your order.";
+      }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  renderCart();
+})();
+</script>
+
+</body></html>
